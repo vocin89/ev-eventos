@@ -1,0 +1,22 @@
+
+<div ng-controller="eventosCtrlIndex as showCase">
+<div class="row">
+	<div class="col-md-12">
+		<legend>Eventos</legend>
+		<hr>	
+	</div>
+</div>	
+
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-primary btn-sm btn-table" ng-click="clickToOpen()">Agregar evento</button>		
+	    <datatable-wrapper>
+	        <table datatable="" dt-options="showCase.dtOptions" dt-instance="showCase.dtInstance" dt-columns="showCase.dtColumns" class="row-border hover table">
+	        </table>
+	    </datatable-wrapper>		
+	</div>
+</div>
+
+	
+	
+</div>	

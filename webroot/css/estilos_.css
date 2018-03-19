@@ -1,0 +1,27 @@
+.float-right{
+	float:right;
+}
+
+.modal-buttons-footer .btn{
+	float:right;
+}
+.modal-buttons-footer .btn.n-left{
+	margin-right: 5px;
+	margin-top: 4px;
+}
+
+.btn-table{
+	margin-top: -60px;
+    float: right;
+}
+
+.n-modal .row{
+	margin-top: 15px;
+}
+
+.n-modal .row.modal-buttons-footer{
+	margin-top:25px;
+}
+.ngdialog-overlay{
+	right: 15px !important;
+}

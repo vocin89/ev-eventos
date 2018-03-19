@@ -1,0 +1,47 @@
+<style type="text/css">
+	[ariaLabelledById="menus-add"] .ngdialog-content{
+		width: 800px !important;
+	}
+
+</style>
+<div ng-controller="menusCtrlAdd as showCase" ng-init="ini()" class="n-modal">
+	<div class="row">
+		<div class="col-md-12">
+			<h5>Menu especial</h5>
+		</div>		
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="ui checkbox">
+			  <input type="checkbox" name="example">
+			  <label>Vegetariano</label>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="ui checkbox">
+			  <input type="checkbox" name="example">
+			  <label>Vegetariano</label>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="ui checkbox">
+			  <input type="checkbox" name="example">
+			  <label>Vegetariano</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<input class="form-control" placeholder="Otro? Por favor especifique.">
+		</div>
+	</div>		
+  	<hr>
+	<div class="row modal-buttons-footer">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-md" ng-click="submit_add()">Guardar</button>
+			<button class="btn btn-default btn-sm n-left" ng-click="closeThisDialog();">Cancelar</button>
+		</div>
+	</div>
+
+</div>

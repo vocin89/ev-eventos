@@ -1,0 +1,67 @@
+<style type="text/css">
+	.ngdialog-content{
+		width: 600px !important;
+		top: -100px;
+	}
+</style>
+<div ng-controller="alumnosCtrlAdd as showCase" class="n-modal">
+	<div class="row">
+		<div class="col-md-12">
+			<h6>Nuevo alumno</h6>
+		</div>		
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<label>Eventos</label>
+			<select class="form-control">
+				<option value="" style="color:darkgray">eventos</option>
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Nombre</label>
+			<input class="form-control" ng-model="data.nombre">
+		</div><div class="col-md-6">
+			<label>Apellido</label>
+			<input class="form-control" ng-model="data.nombre">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Teléfono</label>
+			<input class="form-control" ng-model="data.nombre">
+		</div><div class="col-md-6">
+			<label>Mail</label>
+			<input class="form-control" ng-model="data.nombre">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-sm float-right" ng-click="clickToOpen()">Tengo menú especial</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">Cantidad aproximada de personas invitadas</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<label>Adultos</label>
+			<input class="form-control" ng-model="data.nombre">
+		</div><div class="col-md-4">
+			<label>Niños</label>
+			<input class="form-control" ng-model="data.nombre">
+		</div>
+	</div>
+	
+	<hr>
+	<div class="row modal-buttons-footer">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-md" ng-click="submit_add()">Guardar</button>
+			<button class="btn btn-default btn-sm n-left" ng-click="closeThisDialog();">Cancelar</button>
+		</div>
+	</div>
+
+</div>
