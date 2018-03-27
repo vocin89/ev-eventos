@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
 
 /**
  * Eventos Controller
@@ -25,7 +27,7 @@ class EventosController extends AppController
     public function index()
     {
         $eventos = $this->Eventos->find()
-        ->select(['eventos.id','eventos.nombre','eventos.tipo_evento_id','tipo_eventos.nombre','eventos.fecha','eventos.horario','eventos.precio','escuelas.nombre'])
+        ->select(['eventos.id','eventos.nombre','eventos.tipo_evento_id','tipo_eventos.nombre','eventos.fecha','eventos.horario','eventos.precio_adulto','eventos.precio_ninio','escuelas.nombre'])
         ->join([
             'table' => 'escuelas',
             'type' => 'LEFT',
@@ -129,5 +131,59 @@ class EventosController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function listA($id = null){
+        $this->autoRender = false;
+
+        $bd = ConnectionManager::get('default');                   
+        $id = 1;
+
+        $query="SELECT 
+                    e.nombre as evento_nombre,
+                    ev.id as id,
+                    al.id as id_alumno,
+                    al.nombre as egresado,
+                    al.email,
+                    al.telefono,
+                    al.dni,
+                    tut.nombre as tutor,
+                    ifnull(sum(en.monto),0) as monto_total
+                FROM
+                alumnos_eventos ev
+                STRAIGHT_JOIN eventos e on e.id = ev.evento_id
+                STRAIGHT_JOIN personas al on al.id = ev.alumno_id
+                STRAIGHT_JOIN personas tut on tut.id = ev.tutor_id
+                LEFT JOIN entregas en on en.alumnos_evento_id = ev.id
+
+                WHERE ev.evento_id = {$id}
+                GROUP BY ev.id";        
+              
+        $response=$bd->query($query)->fetchAll('assoc');
+        // $evento = TableRegistry::get('Eventos');
+        // $eventos = $evento->get($id,['contain'=>['AlumnosEventos'=>function($t){
+        //                                             return $t->contain(['Alumno'=>function($q){
+        //                                                                 return $q->select(['egresado'=>'Alumno.nombre']);
+        //                                                              },
+        //                                                              'Tutore'=>function($q){
+        //                                                                 return $q->select(['tutor'=>'Tutore.nombre']);
+        //                                                              },
+        //                                                              'Entregas'=>function($q){
+
+        //                                                                 return $q->select(['alumnos_evento_id',
+        //                                                                                    'monto_total'=>'SUM(monto)'])
+        //                                                                 ->group('Entregas.alumnos_evento_id');
+
+        //                                                             }])
+        //                                             ->select(['AlumnosEventos.evento_id','AlumnosEventos.id']);
+        //                                          }]])
+        //                                  ->toArray();
+        
+
+
+
+        // pr($response);
+        // die();
+        $this->response->body(json_encode(['response'=>$response]));
     }
 }

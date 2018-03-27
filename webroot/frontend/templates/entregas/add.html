@@ -1,0 +1,41 @@
+<style type="text/css">
+	.ngdialog-content{
+		width: 500px !important;
+	}
+</style>
+<div ng-controller="entregasCtrlAdd as showCase" class="n-modal" ng-init="ini()">
+	<div class="row">
+		<div class="col-md-12">
+			<h6>Nuevo pago de <strong>{{egresado}}</strong></h6>
+		</div>		
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Fecha</label>
+			<input class="form-control" type="date" ng-model="data.fecha">
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-md-6">
+			<label>Monto</label>
+			<input class="form-control" type="number" ng-model="data.monto" autofocus>
+		</div>
+		<div class="col-md-6">
+			<label>Modalidad de pago</label>
+			<select class="form-control" ng-model="data.modalidad_pago_id">
+				<option disabled value="">¿Modalidad de pago?</option>
+				<option ng-repeat="modalidad_pago in modalidad_pagos" ng-value="$index">{{modalidad_pago}}</option>
+			</select>
+		</div>
+	</div>
+	<hr>
+	<div class="row modal-buttons-footer">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-md" ng-click="submit_add()">Guardar</button>
+			<button class="btn btn-default btn-sm n-left" ng-click="closeThisDialog();">Cancelar</button>
+		</div>
+	</div>
+
+</div>

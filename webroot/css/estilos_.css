@@ -1,3 +1,13 @@
+.main-layout .sub-item{
+	font-size: .8rem;
+}
+.main-layout .nav-link-text{
+	font-size: 1rem
+}
+
+select{
+	cursor: pointer
+}
 .float-right{
 	float:right;
 }
@@ -24,4 +34,8 @@
 }
 .ngdialog-overlay{
 	right: 15px !important;
+}
+
+.table{
+	font-size: .9rem
 }

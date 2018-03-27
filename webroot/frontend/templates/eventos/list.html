@@ -1,0 +1,39 @@
+
+<div ng-controller="eventosCtrlList as showCase" ng-init="ini()">
+	<div class="row">
+		<div class="col-md-12">
+			<legend>{{nombre_evento}}</legend>
+			<hr>	
+		</div>
+	</div>	
+
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-sm btn-table" ng-click="clickToOpen()">Agregar alumno</button>		
+		    <datatable-wrapper>
+		        <table datatable='ng' dt-options="showCase.dtOptions" class="row-border hover table">
+		        	<thead>
+		        		<tr>
+		        			<th>Egresado</th>		        			
+		        			<th>DNI</th>		        			
+		        			<th>E-mail</th>		        			
+		        			<th>Tutor</th>		        			
+		        			<th>Entregado</th>		        			
+		        			<th>Acciones</th>		        			
+		        		</tr>
+		        	</thead>
+		        	<tbody>
+		        		<tr ng-repeat="alumno in alumnos">
+		        			<td>{{alumno.egresado}}</td>
+		        			<td>{{alumno.dni}}</td>
+		        			<td>{{alumno.email}}</td>
+		        			<td>{{alumno.tutor}}</td>
+		        			<td>$ {{alumno.monto_total}}</td>
+		        			<td><button class="btn btn-primary btn-sm" ng-click="add_payment(alumno)"><i class="fa fa-plus"></i></td>
+		        		</tr>
+		        	</tbody>
+		        </table>
+		    </datatable-wrapper>		
+		</div>
+	</div>
+</div>	

@@ -36,6 +36,11 @@ class EscuelasTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->hasMany('Escuelas', [
+            'className'=>'Eventos',
+            'foreignKey' => 'model_id'
+        ]);
+
         $this->addBehavior('Timestamp');
     }
 

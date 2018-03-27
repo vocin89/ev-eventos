@@ -1,4 +1,9 @@
 <?php
+use Cake\ORM\TableRegistry;
+
+$eventos = TableRegistry::get('Eventos');
+
+$eventos = $eventos->find('list',['keyField'=>'id','valueField'=>'nombre']);
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -42,6 +47,8 @@
 
     <?= $this->Html->css(['estilos_','../node_modules/font-awesome/css/font-awesome.min']); ?>;
 
+   
+
     <?= $this->Html->script(['../node_modules/angular-datatables/dist/angular-datatables',
                               '../node_modules/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap',
                               '../node_modules/ng-dialog/js/ngDialog.min']); ?>;
@@ -50,7 +57,8 @@
     <?= $this->Html->script(['../frontend/controllers/escuelasCtrl',
                               '../frontend/controllers/eventosCtrl',
                              '../frontend/controllers/alumnosCtrl',
-                             '../frontend/controllers/menusCtrl']); ?>
+                             '../frontend/controllers/menusCtrl',
+                             '../frontend/controllers/entregasCtrl']); ?>
 
 
 
@@ -64,17 +72,11 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse main-layout" id="navbarResponsive">
           <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item"  data-placement="right" >
               <a class="nav-link" href="/rev">
-                <!-- <div style="width: 48px;
-    height: 48px;
-    background: red;
-    /* margin-top: -31px; */
-    border-radius: 30px;
-    margin-bottom: -38px;
-    margin-left: -12px;"></div> -->
+             
                 <i class="fa fa-fw fa-dashboard"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
@@ -86,31 +88,36 @@
               </a>
             </li>
             <li class="nav-item"  data-placement="right" >
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#!/eventos" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-wrench"></i>
+                <span class="nav-link-text">Eventos</span>
+              </a>
+              
+
+              <ul class="sidenav-second-level collapse sub-item">
+                <?php foreach($eventos as $e_key => $evento):?> 
+                  <li>
+                    <a href="#!/eventos/list/<?= $e_key ?>"><?= $evento ?></a>
+                  </li>
+                <?php endforeach;?>
+                
+              </ul>
+            </li>
+            
+          <!--   <li class="nav-item"  data-placement="right" >
               <a class="nav-link" href="#!/eventos">
                 <i class="fa fa-fw fa-table"></i>
                 <span class="nav-link-text">Eventos</span>
               </a>
-            </li>
+            </li> -->
+            
             <li class="nav-item"  data-placement="right" >
               <a class="nav-link" href="#!/alumnos">
                 <i class="fa fa-w fa-graduation-cap"></i>
                 <span class="nav-link-text">Alumnos</span>
               </a>
             </li>
-       <!--      <li class="nav-item"  data-placement="right" >
-              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                <i class="fa fa-fw fa-wrench"></i>
-                <span class="nav-link-text">Components</span>
-              </a>
-              <ul class="sidenav-second-level collapse" id="collapseComponents">
-                <li>
-                  <a href="navbar.html">Navbar</a>
-                </li>
-                <li>
-                  <a href="cards.html">Cards</a>
-                </li>
-              </ul>
-            </li>
+            
             <li class="nav-item"  data-placement="right" >
               <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
                 <i class="fa fa-fw fa-file"></i>
@@ -167,7 +174,7 @@
                 <i class="fa fa-fw fa-link"></i>
                 <span class="nav-link-text">Link</span>
               </a>
-            </li> -->
+            </li>
           </ul>
           <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -274,7 +281,7 @@
         </div>
      </nav>
     
-    <div class="content-wrapper" style="padding: 80px">
+    <div class="content-wrapper" style="padding: 55px 20px 55px 20px;">
     <div class="container-fluid">
         <ng-view>    
         </ng-view>    

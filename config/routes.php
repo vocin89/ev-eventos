@@ -60,6 +60,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->setExtensions(['json']);
     $routes->resources('Dashboards');
     $routes->resources('Escuelas');
+    $routes->resources('AlumnosEventos');
     $routes->resources('Eventos');
     
     /**

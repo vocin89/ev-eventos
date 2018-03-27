@@ -44,15 +44,21 @@ class EventosTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Models', [
+        $this->belongsTo('Escuelas', [
             'foreignKey' => 'model_id'
         ]);
+        
         $this->belongsTo('TipoEventos', [
             'foreignKey' => 'tipo_evento_id'
         ]);
         $this->hasMany('AlumnosInvitados', [
             'foreignKey' => 'evento_id'
         ]);
+
+        $this->hasMany('AlumnosEventos', [
+            'foreignKey' => 'evento_id'
+        ]);
+
         $this->hasMany('Mesas', [
             'foreignKey' => 'evento_id'
         ]);

@@ -50,6 +50,7 @@ class Evento extends Entity
         'model' => true,
         'tipo_evento' => true,
         'alumnos_invitados' => true,
+        'alumnos_eventos' => false,
         'mesas' => true,
         'personas_tipo_menus' => true
     ];

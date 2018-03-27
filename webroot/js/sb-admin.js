@@ -1,16 +1,6 @@
 (function($) {
   "use strict"; // Start of use strict
-  // Configure tooltips for collapsed side navigation
-  // $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
-  //   template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
-  // })
-  // Toggle the side navigation
-  // $("#sidenavToggler").click(function(e) {
-  //   e.preventDefault();
-  //   $("body").toggleClass("sidenav-toggled");
-  //   $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
-  //   $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
-  // });
+  
 
   $("#exampleAccordion").hover(function(e) {
     e.preventDefault();
@@ -18,18 +8,16 @@
 
     if($("body").hasClass("sidenav-toggled"))
       $(".navbar-sidenav .nav-link-collapse:not(.collapsed)").click();  
-    // $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
-    // $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
   }); 
 
+  $('.main-layout .nav-item').hover(function(){
+
+    $(this).closest('.nav-item').find('.sub-item').toggleClass('collapse');
+
+  })
 
    
 
-  // Force the toggled class to be removed when a collapsible nav link is clicked
-  // $(".navbar-sidenav .nav-link-collapse").click(function(e) {
-  //   e.preventDefault();
-  //   $("body").removeClass("sidenav-toggled");
-  // });
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function(e) {
     var e0 = e.originalEvent,
@@ -46,9 +34,7 @@
       $('.scroll-to-top').fadeOut();
     }
   });
-  // // Configure tooltips globally
-  // // $('[data-toggle="tooltip"]').tooltip()
-  // // Smooth scrolling using jQuery easing
+  
   $(document).on('click', 'a.scroll-to-top', function(event) {
     var $anchor = $(this);
     $('html, body').stop().animate({

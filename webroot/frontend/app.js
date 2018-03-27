@@ -12,6 +12,12 @@ app.config(function($routeProvider) {
     .when("/eventos", {
         templateUrl : urlFrontendTemp+"eventos/index.html"
     })
+    .when("/eventos/list/:id", {
+        templateUrl : urlFrontendTemp+"eventos/list.html"
+    })
+    .when("/entregas/add", {
+        templateUrl : urlFrontendTemp+"entregas/add.html"
+    })
     .when("/alumnos", {
         templateUrl : urlFrontendTemp+"alumnos/index.html"
     });

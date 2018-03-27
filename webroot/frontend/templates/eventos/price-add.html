@@ -1,0 +1,35 @@
+<style type="text/css">
+	.ngdialog-content{
+		width: 800px !important;
+	}
+	
+</style>
+<div ng-controller="eventosCtrlAdd as showCase" ng-init="ini()" class="n-modal">
+	<div class="row">
+		<div class="col-md-12">
+			<h5>Evento - </h5>
+		</div>
+		<div class="col-md-12">
+			<h5>Definir precios</h5>
+		</div>		
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Aulto</label>
+			<input class="form-control" ng-model="data.nombre" placeholder="Nombre">
+		</div>
+		<div class="col-md-6">
+			<label>Niño</label>
+			<input class="form-control" ng-model="data.nombre" placeholder="Nombre">
+		</div>
+	</div>
+		
+	<div class="row modal-buttons-footer">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-md" ng-click="submit_add()">Guardar</button>
+			<button class="btn btn-default btn-sm n-left" ng-click="closeThisDialog();">Cancelar</button>
+		</div>
+	</div>
+
+</div>
